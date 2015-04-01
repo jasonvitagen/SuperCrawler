@@ -1,0 +1,53 @@
+extends layout
+
+block content
+	form(name="crawler")
+		div.grid
+			div.unit.w-1-1
+				h1= title
+				p Welcome to #{title}
+				
+				br
+
+		div.grid
+			div.unit.w-3-5
+				label
+					| Category Name
+					input(type="text", name="category", ng-model="data.category", required, ng-class="crawler.category.$invalid ? 'invalid' : 'valid'")
+		div.grid
+			div.unit.w-3-5
+				label
+					| Category Url
+					input(type="text", name="categoryLink", ng-model="data.categoryLink", ng-blur="smartSetCrawler(data.categoryLink)", required, ng-class="crawler.categoryLink.$invalid ? 'invalid' : 'valid'")
+		div.grid
+			div.unit.w-3-5
+				label
+					| Category Crawler
+					select(name="crawler", ng-model="data.crawler", required, ng-class="crawler.crawler.$invalid ? 'invalid' : 'valid'")
+						option(value="Gigacircle") Gigacircle
+						option(value="Teepr") Teepr
+						option(value="Lifetw") Lifetw
+		div.grid
+			div.unit.w-3-5
+				label
+					| Check Unique Article Links Url
+					input(type="text", name="checkUniqueArticleLinksUrl", ng-model="data.checkUniqueArticleLinksUrl", ng-init="data.checkUniqueArticleLinksUrl = 'http://localhost:3000/crawled/filter-out-duplicate-article-links'", required, ng-class="crawler.checkUniqueArticleLinksUrl.$invalid ? 'invalid' : 'valid'")
+		div.grid
+			div.unit.w-3-5
+				label
+					| Post Articles Url
+					input(type="text", name="postArticlesUrl", ng-model="data.postArticlesUrl", ng-init="data.postArticlesUrl = 'http://localhost:3000/crawled/get-crawled-articles'", required, ng-class="crawler.postArticlesUrl.$invalid ? 'invalid' : 'valid'")
+		div.grid
+			div.unit.w-3-5
+				button(type="button", class="button", ng-click="crawl(data)", ng-disabled="crawler.$invalid")
+					| {{ status.crawl || 'Crawl' }}
+
+		div.grid
+			div.unit.w-1-1
+				div#crawler-msg
+
+
+	script(src="/javascripts/jquery.js")
+	script(src="/javascripts/moment.js")
+	script(src="/javascripts/angular.min.js")
+	script(src="/javascripts/superCrawler.js")
