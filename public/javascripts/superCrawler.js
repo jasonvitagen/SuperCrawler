@@ -51,7 +51,7 @@ connection.onerror = function () {
 
 connection.onmessage = function (e) {
 
-	$('#crawler-msg').append('<p class="alert">' + e.data + ' ' + moment().format('D-M-YYYY h:ma') + '</p>');
+	$('#crawler-msg').append('<p class="alert crawl-msg">' + e.data + ' ' + moment().format('D-M-YYYY h:ma') + '</p>');
 
 }
 

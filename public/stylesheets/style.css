@@ -150,3 +150,8 @@ select:focus {
   border-radius: 2px;
   margin: 8px;
 }
+
+.crawl-msg {
+	word-wrap: break-word;
+}
+
