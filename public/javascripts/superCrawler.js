@@ -22,6 +22,7 @@ angular
 		}
 
 		$scope.crawl = function (data) {
+			$('#crawler-msg').html('');
 			$scope.status.crawl = 'Firing request...';
 			$http
 				.post('./crawler/crawl', data)

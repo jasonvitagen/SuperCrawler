@@ -105,7 +105,7 @@ apis.crawl = function (args, callback) {
 		socket.sendText('posting articles');
 		var j = request.jar();
 		var cookie = request.cookie('Authentication=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoicWlzaGVuLmNoZW5nIiwic2NvcGVzIjpbImFwcHJvdmVDcmF3bGVkQXJ0aWNsZSIsImNhbkVkaXREZWxldGVBcnRpY2xlIiwiY2FuQWNjZXNzQ29udHJvbFBhbmVsIl0sImlhdCI6MTQyNzYzOTM3N30.HG3RjjRVUeb5JkyRJ0f0hbjVRfRgkQx76Q1XRW_MqoE');
-		j.setCookie(cookie, 'http://128.199.93.98');
+		j.setCookie(cookie, 'http://localhost');
 
 		request.post({
 			url : args.postArticlesUrl,
