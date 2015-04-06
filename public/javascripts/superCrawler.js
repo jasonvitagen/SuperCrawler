@@ -21,6 +21,12 @@ angular
 			
 		}
 
+		$scope.smartSetAuthenticationDomain = function (val) {
+
+			$scope.data.authenticationDomain = new URL(val).hostname;
+
+		}
+
 		$scope.crawl = function (data) {
 			$('#crawler-msg').html('');
 			$scope.status.crawl = 'Firing request...';

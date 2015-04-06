@@ -36,7 +36,12 @@ block content
 			div.unit.w-3-5
 				label
 					| Post Articles Url
-					input(type="text", name="postArticlesUrl", ng-model="data.postArticlesUrl", ng-init="data.postArticlesUrl = 'http://localhost:3000/crawled/get-crawled-articles'", required, ng-class="crawler.postArticlesUrl.$invalid ? 'invalid' : 'valid'")
+					input(type="text", name="postArticlesUrl", ng-model="data.postArticlesUrl", ng-init="data.postArticlesUrl = 'http://localhost:3000/crawled/get-crawled-articles'", required, ng-class="crawler.postArticlesUrl.$invalid ? 'invalid' : 'valid'", ng-blur="smartSetAuthenticationDomain(data.postArticlesUrl)")
+		div.grid
+			div.unit.w-3-5
+				label
+					| Authentication Domain
+					input(type="text", name="authenticationDomain", ng-model="data.authenticationDomain", ng-init="smartSetAuthenticationDomain(data.postArticlesUrl)", required, ng-class="crawler.authenticationDomain.$invalid ? 'invalid' : 'valid'")
 		div.grid
 			div.unit.w-3-5
 				button(type="button", class="button", ng-click="crawl(data)", ng-disabled="crawler.$invalid")
