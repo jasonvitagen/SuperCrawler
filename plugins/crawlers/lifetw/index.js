@@ -17,8 +17,12 @@ Lifetw.getArticle = function (args, callback) {
 		return callback('No article category');
 	}
 
-	request(args.articleLink, function (err, response, body) {
+	request({
+		url : args.articleLink,
+		timeout : 25000
+	}, function (err, response, body) {
 		if (!err && response.statusCode == 200) {
+			console.log(body);
 			behaviors.getArticle({
 				body : body
 			}, function (err, article) {
@@ -30,6 +34,9 @@ Lifetw.getArticle = function (args, callback) {
 				article.category = args.category;
 				return callback(null, article);
 			});
+		} else {
+			console.log('ada error');
+			return callback('err');
 		}
 	});
 }

@@ -27,6 +27,9 @@ apis.crawl = function (args, callback) {
 	if (!args.postArticlesUrl) {
 		return callback('No "postArticlesUrl" arg');
 	}
+	if (!args.authenticationDomain) {
+		return callback('No "authenticationDomain" arg');
+	}
 
 	args.crawler = require('../../plugins/crawlers/' + args.crawler.toLowerCase());
 
@@ -71,6 +74,8 @@ apis.crawl = function (args, callback) {
 		socket.sendText('getting articles');
 		var crawledArticles = [];
 		async.each(articleLinks, function (articleLink, okay) {
+
+			console.log('a', articleLink.link);
 			socket.sendText('getting ' + articleLink.link);
 			args.crawler.getArticle({
 				articleLink : articleLink.link,
@@ -78,13 +83,16 @@ apis.crawl = function (args, callback) {
 				category : args.category
 			}, function (err, article) {
 				if (err) { // ignore error
+					console.log('g');
 					okay();
 				} else {
+					console.log('h');
 					crawledArticles.push(article);
 					okay();
 				}
 			});
 		}, function (err) {
+			console.log('i');
 			socket.sendText('done getting articles');
 			if (err) { // ignore error
 				done(null, crawledArticles);
@@ -105,7 +113,7 @@ apis.crawl = function (args, callback) {
 		socket.sendText('posting articles');
 		var j = request.jar();
 		var cookie = request.cookie('Authentication=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoicWlzaGVuLmNoZW5nIiwic2NvcGVzIjpbImFwcHJvdmVDcmF3bGVkQXJ0aWNsZSIsImNhbkVkaXREZWxldGVBcnRpY2xlIiwiY2FuQWNjZXNzQ29udHJvbFBhbmVsIl0sImlhdCI6MTQyNzYzOTM3N30.HG3RjjRVUeb5JkyRJ0f0hbjVRfRgkQx76Q1XRW_MqoE');
-		j.setCookie(cookie, 'http://localhost');
+		j.setCookie(cookie, args.authenticationDomain);
 
 		request.post({
 			url : args.postArticlesUrl,

@@ -29,6 +29,10 @@ Gigacircle.getArticle = function (args, callback) {
 				return callback(null, article);
 			});
 
+		} else {
+
+			return callback('err');
+
 		}
 	});
 }

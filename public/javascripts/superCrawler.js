@@ -23,7 +23,7 @@ angular
 
 		$scope.smartSetAuthenticationDomain = function (val) {
 
-			$scope.data.authenticationDomain = new URL(val).hostname;
+			$scope.data.authenticationDomain = 'http://' + new URL(val).hostname;
 
 		}
 

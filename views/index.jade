@@ -31,12 +31,12 @@ block content
 			div.unit.w-3-5
 				label
 					| Check Unique Article Links Url
-					input(type="text", name="checkUniqueArticleLinksUrl", ng-model="data.checkUniqueArticleLinksUrl", ng-init="data.checkUniqueArticleLinksUrl = 'http://localhost:3000/crawled/filter-out-duplicate-article-links'", required, ng-class="crawler.checkUniqueArticleLinksUrl.$invalid ? 'invalid' : 'valid'")
+					input(type="text", name="checkUniqueArticleLinksUrl", ng-model="data.checkUniqueArticleLinksUrl", ng-init="data.checkUniqueArticleLinksUrl = 'http://128.199.93.98/crawled/filter-out-duplicate-article-links'", required, ng-class="crawler.checkUniqueArticleLinksUrl.$invalid ? 'invalid' : 'valid'")
 		div.grid
 			div.unit.w-3-5
 				label
 					| Post Articles Url
-					input(type="text", name="postArticlesUrl", ng-model="data.postArticlesUrl", ng-init="data.postArticlesUrl = 'http://localhost:3000/crawled/get-crawled-articles'", required, ng-class="crawler.postArticlesUrl.$invalid ? 'invalid' : 'valid'", ng-blur="smartSetAuthenticationDomain(data.postArticlesUrl)")
+					input(type="text", name="postArticlesUrl", ng-model="data.postArticlesUrl", ng-init="data.postArticlesUrl = 'http://128.199.93.98/crawled/get-crawled-articles'", required, ng-class="crawler.postArticlesUrl.$invalid ? 'invalid' : 'valid'", ng-blur="smartSetAuthenticationDomain(data.postArticlesUrl)")
 		div.grid
 			div.unit.w-3-5
 				label

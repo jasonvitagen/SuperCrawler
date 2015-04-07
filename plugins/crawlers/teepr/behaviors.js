@@ -24,7 +24,6 @@ behaviors.getArticle = function (args, callback) {
 	if ($('.post-single-content iframe').length > 0 &&
 		/youtube/.test($('.post-single-content iframe').attr('src'))) {
 		var youtubeSrc = $('.post-single-content iframe').attr('src');
-		youtubeSrc = youtubeSrc.replace(/\/\//, 'http://');
 		$('.post-single-content iframe').replaceWith('<p><iframe allowfullscreen="" frameborder="0" height="360" src="' + youtubeSrc + '" width="640"></iframe></p>');
 	}
 
