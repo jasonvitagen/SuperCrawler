@@ -48,6 +48,7 @@ behaviors.getArticle = function (args, callback) {
 				.join('')
 				.replace(/(<img .+?>)/g, '<p>$1</p>')
 				.replace(/(<iframe .+?>)/g, '<p>$1</p>')
+				.replace(/(&nbsp;)/g, '<br>$1')
 				.replace(/(\n|\r)/gm, '');
 
 	callback(null, {
