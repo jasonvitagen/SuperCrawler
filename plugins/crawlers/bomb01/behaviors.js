@@ -44,12 +44,15 @@ behaviors.getArticle = function (args, callback) {
 				return $(this).html();
 			  }).toArray();
 
+	fs.writeFileSync('title : ' + title, content.join('').replace(/(&nbsp;)/g, '<br>$1'));
+
 	content = content
 				.join('')
 				.replace(/(<img .+?>)/g, '<p>$1</p>')
 				.replace(/(<iframe .+?>)/g, '<p>$1</p>')
 				.replace(/(&nbsp;)/g, '<br>$1')
 				.replace(/(\n|\r)/gm, '');
+
 
 	callback(null, {
 		title   : title,
