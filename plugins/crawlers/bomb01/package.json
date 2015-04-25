@@ -1,0 +1,11 @@
+{
+  "name": "bomb01",
+  "version": "1.0.0",
+  "description": "Crawler for Bomb01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Cheng",
+  "license": "ISC"
+}

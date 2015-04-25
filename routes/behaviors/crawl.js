@@ -71,11 +71,11 @@ apis.crawl = function (args, callback) {
 	}
 
 	var getArticles = function (articleLinks, done) {
+
 		socket.sendText('getting articles');
 		var crawledArticles = [];
 		async.each(articleLinks, function (articleLink, okay) {
 
-			console.log('a', articleLink.link);
 			socket.sendText('getting ' + articleLink.link);
 			args.crawler.getArticle({
 				articleLink : articleLink.link,
@@ -83,16 +83,13 @@ apis.crawl = function (args, callback) {
 				category : args.category
 			}, function (err, article) {
 				if (err) { // ignore error
-					console.log('g');
 					okay();
 				} else {
-					console.log('h');
 					crawledArticles.push(article);
 					okay();
 				}
 			});
 		}, function (err) {
-			console.log('i');
 			socket.sendText('done getting articles');
 			if (err) { // ignore error
 				done(null, crawledArticles);
@@ -136,7 +133,7 @@ apis.crawl = function (args, callback) {
 		});
 	}
 
-	async.waterfall([getArticleLinks, getUniqueArticleLinks, getArticles, postArticles], function (err, results) {
+	async.waterfall([getArticleLinks, getArticles, postArticles], function (err, results) {
 		if (err) {
 			return callback(err);
 		}

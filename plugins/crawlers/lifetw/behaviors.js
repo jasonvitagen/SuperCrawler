@@ -18,6 +18,7 @@ behaviors.getArticle = function (args, callback) {
 	$('#mainContent script').replaceWith('');
 	$('#mainContent ins').replaceWith('');
 	$('#mainContent style').replaceWith('');
+	$('#mainContent a').replaceWith($('#mainContent a').text());
 	images = $('#mainContent')
 				.find('img')
 				.toArray()

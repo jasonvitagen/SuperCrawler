@@ -18,6 +18,9 @@ angular
 			if (val.indexOf('life.com.tw') > -1) {
 				return $scope.data.crawler = 'Lifetw';
 			}
+			if (val.indexOf('bomb01.com') > -1) {
+				return $scope.data.crawler = 'Bomb01';
+			}
 			
 		}
 

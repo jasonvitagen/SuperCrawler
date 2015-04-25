@@ -20,6 +20,7 @@ behaviors.getArticle = function (args, callback) {
 	$('.post-single-content .mid-post-ad').replaceWith('');
 	$('.post-single-content script').replaceWith('');
 	$('.post-single-content style').replaceWith('');
+	$('.post-single-content a').replaceWith($('.post-single-content a').text());
 
 	if ($('.post-single-content iframe').length > 0 &&
 		/youtube/.test($('.post-single-content iframe').attr('src'))) {
