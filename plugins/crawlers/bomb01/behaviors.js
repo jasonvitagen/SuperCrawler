@@ -73,10 +73,11 @@ behaviors.getArticleLinksFromCategory = function (args, callback) {
 	var $ = cheerio.load(args.body)
 		, articleLinks = [];
 
-	$('#wrapper .col-sm-6').each(function (i, article) {
+	$('#wrapper .col-lg-4').each(function (i, article) {
 		var articleLink = {};
 		articleLink.link = 'http://www.bomb01.com' + $(this).find('a').attr('href');
-		articleLink.thumbnail = 'http://www.bomb01.com' + $(this).find('img').attr('src');
+		articleLink.thumbnail = 'http://www.bomb01.com' + $(this).find('img').attr('data-cfsrc');
+		console.log(articleLink);
 		articleLinks.push(articleLink);
 	});
 
