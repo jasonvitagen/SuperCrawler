@@ -133,7 +133,7 @@ apis.crawl = function (args, callback) {
 		});
 	}
 
-	async.waterfall([getArticleLinks, getArticles, postArticles], function (err, results) {
+	async.waterfall([getArticleLinks, getUniqueArticleLinks, getArticles, postArticles], function (err, results) {
 		if (err) {
 			return callback(err);
 		}

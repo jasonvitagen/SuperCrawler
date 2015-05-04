@@ -76,7 +76,7 @@ behaviors.getArticleLinksFromCategory = function (args, callback) {
 	$('#wrapper .col-lg-4').each(function (i, article) {
 		var articleLink = {};
 		articleLink.link = 'http://www.bomb01.com' + $(this).find('a').attr('href');
-		articleLink.thumbnail = 'http://www.bomb01.com' + $(this).find('img').attr('data-cfsrc');
+		articleLink.thumbnail = 'http://www.bomb01.com' + ($(this).find('img').attr('data-cfsrc') || $(this).find('img').attr('src'));
 		console.log(articleLink);
 		articleLinks.push(articleLink);
 	});
